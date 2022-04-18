@@ -3,7 +3,9 @@ package main
 import "fmt"
 
 func main() {
+
 	// 示例1。
+	//当切片长度<1024时，新切片的容量是旧切片容量的两倍，最后可能还会添加元素为了内存对齐
 	s6 := make([]int, 0)
 	fmt.Printf("The capacity of s6: %d\n", cap(s6))
 	for i := 1; i <= 5; i++ {
@@ -15,6 +17,7 @@ func main() {
 	// 示例2。
 	s7 := make([]int, 1024)
 	fmt.Printf("The capacity of s7: %d\n", cap(s7))
+	//当切片的长度>1024时，新切片的容量 = 旧切片的容量*1.25,最后可能还会添加元素为了内存对齐
 	s7e1 := append(s7, make([]int, 200)...)
 	fmt.Printf("s7e1: len: %d, cap: %d\n", len(s7e1), cap(s7e1))
 	s7e2 := append(s7, make([]int, 400)...)

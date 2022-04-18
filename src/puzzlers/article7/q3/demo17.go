@@ -3,6 +3,7 @@ package main
 import "fmt"
 
 func main() {
+	//对于使用同一块数组的切片，需要考虑并发安全问题
 	// 示例1。
 	a1 := [7]int{1, 2, 3, 4, 5, 6, 7}
 	fmt.Printf("a1: %v (len: %d, cap: %d)\n",
