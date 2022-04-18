@@ -4,6 +4,9 @@ import (
 	"fmt"
 )
 
+/*
+	1. 对于整数之间的转换需要记得一个规则：当前类型比目标类型表示范围小，那么可以直接转，但是如果相反则不可以直接转换，可能会存在问题
+*/
 func main() {
 	// 重点1的示例。
 	var srcInt = int16(-255)
@@ -31,4 +34,11 @@ func main() {
 	fmt.Printf("The string: %q\n", string([]byte{'\xe4', '\xbd', '\xa0', '\xe5', '\xa5', '\xbd'}))
 	fmt.Printf("The rune slice of %q: %U\n", srcStr, []rune(srcStr))
 	fmt.Printf("The string: %q\n", string([]rune{'\u4F60', '\u597D'}))
+
+	//len(str)显示的string底层字节大小
+	//如果需要str的大小，方法一是len([]rune(str))，将string转为rune切片，方法二是utf8.RuneCountInString(str)。对string进行range遍历时，是以unicode编码遍历的
+	fmt.Printf("the len of 你好 = %v\n", len([]rune(srcStr)))
+	for i:=0;i<len(srcStr);i++{
+		fmt.Println(srcStr[i])
+	}
 }

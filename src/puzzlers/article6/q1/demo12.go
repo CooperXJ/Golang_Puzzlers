@@ -10,6 +10,7 @@ func main() {
 	container := map[int]string{0: "zero", 1: "one", 2: "two"}
 
 	// 方式1。
+	//对于类型判断必须先将变量转为接口类型,此处的ok1可以不要
 	_, ok1 := interface{}(container).([]string)
 	_, ok2 := interface{}(container).(map[int]string)
 	if !(ok1 || ok2) {
